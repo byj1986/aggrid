@@ -9,12 +9,15 @@ import { ChildComponent } from './child/child.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { CalendarModule } from 'primeng/calendar';
+import { MulticomboboxComponent } from './multicombobox/multicombobox.component';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChildComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    MulticomboboxComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { CalendarModule } from 'primeng/calendar';
     HttpClientModule,
     CalendarModule,
     BrowserAnimationsModule,
+    MultiSelectModule,
     AgGridModule.withComponents([])
   ],
   providers: [],
