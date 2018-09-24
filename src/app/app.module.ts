@@ -26,7 +26,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
     CalendarModule,
     BrowserAnimationsModule,
     MultiSelectModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([MulticomboboxComponent, DatepickerComponent])
   ],
   providers: [],
   bootstrap: [AppComponent]

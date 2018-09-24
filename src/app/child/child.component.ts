@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MulticomboboxComponent } from '../multicombobox/multicombobox.component';
+import { DatepickerComponent } from '../datepicker/datepicker.component';
 
 @Component({
   selector: 'app-child',
@@ -7,12 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
   title = 'app';
-
+  // manufactories = ['Honda', 'Toyota', 'Ford', 'Porsche'];
   columnDefs = [
-    { headerName: 'Make', field: 'make' },
+    {
+      headerName: 'Make', field: 'make', editable: true,
+      cellEditorFramework: MulticomboboxComponent,
+      cellEditorParams: {
+        options: [
+          { label: 'Honda', value: { id: 1 } },
+          { label: 'Toyota', value: { id: 2 } },
+          { label: 'Ford', value: { id: 3 } },
+          { label: 'Porsche', value: { id: 4 } }
+        ]
+      }
+    },
     { headerName: 'Model', field: 'model' },
-    { headerName: 'Price', field: 'price' },
-    { headerName: 'PublishDate', field: 'date' },
+    { headerName: 'Price', field: 'price', editable: true },
+    {
+      headerName: 'PublishDate', field: 'date', editable: true,
+      cellEditorFramework: DatepickerComponent
+    },
   ];
 
   rowData = [

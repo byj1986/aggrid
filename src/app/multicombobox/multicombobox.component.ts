@@ -1,51 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { MultiSelectModule } from 'primeng/multiselect';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MultiSelectModule, MultiSelect } from 'primeng/multiselect';
 import { SelectItem } from 'primeng/api';
+import { ICellEditorAngularComp } from 'ag-grid-angular';
+import { ICellEditorParams, IAfterGuiAttachedParams } from 'ag-grid-community';
 @Component({
   selector: 'app-multicombobox',
   templateUrl: './multicombobox.component.html',
   styleUrls: ['./multicombobox.component.css']
 })
-export class MulticomboboxComponent implements OnInit {
+export class MulticomboboxComponent implements ICellEditorAngularComp, OnInit {
+  @ViewChild('multiSelect') multiSelect: MultiSelect;
 
-  cities1: SelectItem[];
+  getValue() {
+  }
+  isPopup?(): boolean {
+    return true;
+  }
 
-  cities2: City[];
+  isCancelBeforeStart?(): boolean {
+    return false;
+  }
+  isCancelAfterEnd?(): boolean {
+    return false;
+  }
+  focusIn?(): void {
+  }
+  focusOut?(): void {
+  }
+  agInit(params: any): void {
+    console.log(params.options);
+    this.multiSelect.options = params.options;
+    console.log(this.multiSelect.options);
+  }
+  afterGuiAttached?(params?: IAfterGuiAttachedParams): void {
+  }
 
-  selectedCities1: City[];
-
-  selectedCities2: City[];
   constructor() {
-    // SelectItem API with label-value pairs
-    this.cities1 = [
-      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
-
-    // An array of cities
-    this.cities2 = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
-    ];
+    console.log('aaaabbbb');
   }
 
   ngOnInit() {
   }
 
   onValueChanged() {
-    console.log(this.selectedCities1);
-    console.log(this.selectedCities2);
   }
 }
 
 class City {
   name: string;
   code: string;
-
 }
